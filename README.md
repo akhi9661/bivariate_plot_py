@@ -46,7 +46,8 @@ bivariate_plot(
     n_bins=4, 
     cmap_name='bwr', 
     alpha=0.7, 
-    edgecolor='black', 
+    edgecolor='black',
+    plot_kwargs={'labelsize': 14, 'title': 'Test Title'},
     legend_kwargs={'legend_position': (1.10, 0.15), 'legend_size': 0.2}
 )
 ```
@@ -84,10 +85,10 @@ bivariate_plot(
   - Arguments for customizing the legend (e.g., position, size).
 
 - `plot_kwargs`: `dict`, optional
-  - Arguments for customizing the scatter plot (e.g., color, edge color).
+  - Arguments for customizing the main plot aesthetics (e.g., label size, title, etc.).
 
 - `**plt_kwargs`: 
-  - Additional keyword arguments passed to the `matplotlib` scatter function.
+  - Additional keyword arguments passed to the `matplotlib` scatter function ( (e.g., color, edgecolor, etc.)).
 
 
 ## Contributing
