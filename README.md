@@ -1,4 +1,4 @@
-# Bivariate Plot Visualization
+# Bivariate Plot
 
 ## Overview
 
