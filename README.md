@@ -20,6 +20,7 @@ To use the function, you need to have Python and the required libraries installe
 - matplotlib
 - rasterio (may require prior `gdal` installation too)
 - geopandas
+- os
 
 You can install the necessary packages via pip:
 
