@@ -2,32 +2,35 @@
 
 ## Overview
 
-The `bivariate_plot` function allows users to create bivariate scatter plots with color classification based on specified criteria. This visualization technique is useful for exploring the relationship between two continuous variables in a dataset and understanding how they interact. Similiar to `biscale` package in R.
+The `bivariate_plot_df.py` allows users to create bivariate scatter plots with color classification based on specified criteria. This visualization technique is useful for exploring the relationship between two continuous variables in a dataset and understanding how they interact. `bivariate_plot_raster.py` is for raster images similiar to `biscale` package in R.
 
 ## Features
 
-- Supports classification of data using quantiles or equal bin sizes.
-- Dynamically generates colors for the scatter points using various colormaps.
-- Provides a customizable legend that reflects the data classification.
+- Supports classification of dataframe or raster using quantiles or equal interval.
 - Configurable plot aesthetics (labels, titles, sizes).
+- Option to overlay shapefiles for additional context on raster bivariate plot.
+- Customizable colormaps and figure size.
+- Customizable legend generation to help interpret the bivariate classifications.
 
 ## Installation
 
-To use the `bivariate_plot` function, you need to have Python and the required libraries installed. You can install the necessary packages via pip:
+To use the `bivariate_plot` function, you need to have Python and the required libraries installed. 
+- Python 3.x
+- numpy
+- matplotlib
+- rasterio (may require prior `gdal` installation too)
+- geopandas
+
+You can install the necessary packages via pip:
 
 ```bash
-pip install pandas matplotlib
+pip install numpy pandas matplotlib rasterio geopandas
 ```
 
 ## Usage
-### Importing libraries
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-```
 
-### Example
+
+### Dataframe bivariate scatter plot
 ```python
 # Sample Data
 data = {
@@ -51,45 +54,17 @@ bivariate_plot(
     legend_kwargs={'legend_position': (1.10, 0.15), 'legend_size': 0.2}
 )
 ```
+### Raster bivariate plot
 
-### Parameters
+```python
+raster1_path = r'path/to/your/temperature_raster.TIF'
+raster2_path = r'path/to/your/precipitation_raster.TIF'
+shp_path = r'path/to/your/shapefile.shp'
 
-- `df`: `pandas.DataFrame`
-  - The DataFrame containing the data to be plotted.
+bivariate_raster_plot(raster1_path, raster2_path, shp_path, n_bins=5, style='quantile', cmap_name='coolwarm', 
+                       legend_kwargs={'ticklabelsize': 10, 'labelsize': 10, 'y_label': 'Precipitation (mm)', 'x_label': 'Temperature (°C)'})
 
-- `x`: `str`
-  - The name of the column in `df` to be used for the x-axis.
-
-- `y`: `str`
-  - The name of the column in `df` to be used for the y-axis.
-
-- `style`: `str`, optional
-  - The method for classifying the data. Options are:
-    - `'quantile'`: Classifies the data into quantiles.
-    - `'equal'`: Classifies the data into equal-sized bins.
-  - Default is `'quantile'`.
-
-- `n_bins`: `int`, optional
-  - The number of bins to use for classification.
-  - Default is `3`.
-
-- `cmap_name`: `str`, optional
-  - The name of the colormap to use for coloring the points.
-  - Default is `'viridis'`.
-
-- `figsize`: `tuple`, optional
-  - Size of the figure.
-  - Default is `(8, 6)`.
-
-- `legend_kwargs`: `dict`, optional
-  - Arguments for customizing the legend (e.g., position, size).
-
-- `plot_kwargs`: `dict`, optional
-  - Arguments for customizing the main plot aesthetics (e.g., label size, title, etc.).
-
-- `**plt_kwargs`: 
-  - Additional keyword arguments passed to the `matplotlib` scatter function ( (e.g., color, edgecolor, etc.)).
-
+```
 
 ## Contributing
 If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. All contributions are welcome!
