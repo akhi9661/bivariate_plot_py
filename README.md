@@ -1,3 +1,5 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github.com/akhi9661/bivariate_plot_py/blob/main/bivariate.ipynb)
+
 # Bivariate Plot
 
 ## Overview
