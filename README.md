@@ -41,19 +41,23 @@ data = {
 df = pd.DataFrame(data)
 
 # Call the bivariate classification function
-bivariate_plot(
-    df, 
-    'x', 
-    'y', 
+path = r'data\test.csv'
+# Call the bivariate classification function using a continuous colormap
+bivariate_plot_df(
+    path, 'ADF Statistic', 'Keener Z-Statistic', 
     style='quantile', 
-    n_bins=4, 
+    n_bins=5, 
     cmap_name='bwr', 
     alpha=0.7, 
-    edgecolor='black',
-    plot_kwargs={'labelsize': 14, 'title': 'Test Title'},
-    legend_kwargs={'legend_position': (1.10, 0.15), 'legend_size': 0.2}
+    edgecolor='black', 
+    plot_kwargs = {},
+    legend_kwargs={'legend_position': (1.10, 0.15), 'legend_size': 0.2, 'ticklabelsize': 10}
 )
 ```
+
+![bivariate_df_plot](https://github.com/user-attachments/assets/686a22c8-a484-4cad-b75e-29a38554964e)
+
+
 ### Raster bivariate plot
 
 ```python
@@ -72,6 +76,9 @@ bivariate_raster_plot(
 )
 
 ```
+
+![bivariate_raster_plot](https://github.com/user-attachments/assets/673a11ba-71b2-449e-861a-609be037d7d8)
+
 
 ## Contributing
 If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. All contributions are welcome!
