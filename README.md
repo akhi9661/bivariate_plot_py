@@ -14,7 +14,7 @@ The `bivariate_plot_df.py` allows users to create bivariate scatter plots with c
 
 ## Installation
 
-To use the `bivariate_plot` function, you need to have Python and the required libraries installed. 
+To use the function, you need to have Python and the required libraries installed. 
 - Python 3.x
 - numpy
 - matplotlib
@@ -61,8 +61,15 @@ raster1_path = r'path/to/your/temperature_raster.TIF'
 raster2_path = r'path/to/your/precipitation_raster.TIF'
 shp_path = r'path/to/your/shapefile.shp'
 
-bivariate_raster_plot(raster1_path, raster2_path, shp_path, n_bins=5, style='quantile', cmap_name='coolwarm', 
-                       legend_kwargs={'ticklabelsize': 10, 'labelsize': 10, 'y_label': 'Precipitation (mm)', 'x_label': 'Temperature (°C)'})
+bivariate_raster_plot(
+    raster1_path, 
+    raster2_path, 
+    shp_path, 
+    n_bins=5, 
+    style='quantile', 
+    cmap_name='coolwarm', 
+    legend_kwargs={'ticklabelsize': 10, 'labelsize': 10, 'y_label': 'Precipitation (mm)', 'x_label':'Temperature (°C)'}
+)
 
 ```
 
