@@ -33,19 +33,10 @@ pip install numpy pandas matplotlib rasterio geopandas
 
 ### Dataframe bivariate scatter plot
 ```python
-# Sample Data
-data = {
-    'x': np.random.normal(50, 10, 2000),
-    'y': np.random.normal(50, 10, 2000)
-}
-
-df = pd.DataFrame(data)
-
-# Call the bivariate classification function
 path = r'data\test.csv'
 # Call the bivariate classification function using a continuous colormap
 bivariate_plot_df(
-    path, 'ADF Statistic', 'Keener Z-Statistic', 
+    path, 'ADF Statistic', 'Keener Z-Statistic',
     style='quantile', 
     n_bins=5, 
     cmap_name='bwr', 
