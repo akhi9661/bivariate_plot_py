@@ -1,14 +1,15 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-def bivariate_plot(df, x, y, style='quantile', n_bins=3, cmap_name='viridis', figsize=(8, 6), legend_kwargs=None, plot_kwargs=None, **plt_kwargs):
+def bivariate_plot_df(df_path, x, y, style='quantile', n_bins=3, cmap_name='viridis', figsize=(8, 6), legend_kwargs=None, plot_kwargs=None, **plt_kwargs):
     """
     Create a bivariate scatter plot with color classification based on specified criteria.
     
     Parameters:
-    df : pandas.DataFrame
-        The DataFrame containing the data to be plotted.
+    df_path : str
+        The path to the csv file.
     x : str
         The name of the column in `df` to be used for the x-axis.
     y : str
@@ -48,6 +49,8 @@ def bivariate_plot(df, x, y, style='quantile', n_bins=3, cmap_name='viridis', fi
     ticklabelsize = plot_kwargs.get('ticklabelsize', 12)
     title = plot_kwargs.get('title', f'Bivariate Plot: {x} vs {y}')
     titlesize = plot_kwargs.get('titlesize', 16)
+
+    df = pd.read_csv(df_path).dropna()
     
     # Step 1: Classify the X variable
     if style == 'quantile':
@@ -102,6 +105,7 @@ def bivariate_plot(df, x, y, style='quantile', n_bins=3, cmap_name='viridis', fi
     # Create the custom square legend, passing the existing ax and legend_kwargs
     create_bivariate_legend(fig, ax, n_bins, colors, x_label=x, y_label=y, xlim=xlim, ylim=ylim, **(legend_kwargs or {}))
 
+    plt.savefig(os.path.join(os.path.dirname(df_path), 'bivariate_df_plot.jpeg'), dpi=300, bbox_inches='tight')
     plt.show()
 
 def create_bivariate_legend(fig, ax, n_bins, colors, x_label='X', y_label='Y', xlim=(0, 1), ylim=(0, 1), **legend_kwargs):
